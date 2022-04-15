@@ -145,5 +145,12 @@ def admin_viewProducts():
     cursor.execute("select * from admin")
     result = cursor.fetchall()
     return render_template("admin_view.html", products=result)
+
+@app.route("/userview")
+def user_viewProducts():
+    cursor = connection.cursor()
+    cursor.execute("select * from admin")
+    result = cursor.fetchall()
+    return render_template("userview.html", products=result)
 if __name__ == "__main__":
     app.run(debug=True)
