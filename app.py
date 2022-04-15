@@ -1,19 +1,20 @@
+import os.path
+
 from flask import Flask, render_template, request
 import sqlite3 as sql
 
-from werkzeug.utils import redirect
+from werkzeug.utils import redirect, secure_filename
 
 
-connection = sql.connect("Adminmodule.db", check_same_thread=False)
-connection1 = sql.connect("Usermodule.db", check_same_thread=False)
+connection = sql.connect("Wrapup.db", check_same_thread=False)
 
-listofusers = connection1.execute("select name from sqlite_master where type='table' AND name='user'").fetchall()
+listofusers = connection.execute("select name from sqlite_master where type='table' AND name='user'").fetchall()
 listofproducts = connection.execute("select name from sqlite_master where type='table' AND name='admin'").fetchall()
 
 if listofusers != []:
     print("Table exist already")
 else:
-    connection1.execute('''create table user(
+    connection.execute('''create table user(
                              ID integer primary key autoincrement,
                              name text,
                              phone_number integer,
@@ -27,17 +28,17 @@ if listofproducts != []:
 else:
     connection.execute('''create table admin(
                              ID integer primary key autoincrement,
-                             email text,
-                             password varchar,
                              category text,
                              product_name text,
-                             price integer
+                             price integer,
+                             image blob
 
                              );''')
     print("Table Created Successfully")
 
 
 app = Flask(__name__)
+app.config['UPLOAD_FOLDER'] = "static\image"
 
 @app.route("/", methods=["POST", "GET"])
 def home():
@@ -59,9 +60,9 @@ def new_user():
         print(getemail)
         print(getpassword)
         try:
-            connection1.execute("insert into user(name,phone_number,email,password)\
+            connection.execute("insert into user(name,phone_number,email,password)\
                                    values('" + getname + "'," + getphone_number + ",'" + getemail + "', '" + getpassword + "')")
-            connection1.commit()
+            connection.commit()
             print("User Data Added Successfully!")
             return redirect("/userlogin")
         except Exception as e:
@@ -115,20 +116,25 @@ def adminlogin():
 @app.route("/addproducts", methods=["POST", "GET"])
 def addproducts():
     if request.method == "POST":
-        getcategory = request.form["category"]
-        getproductname = request.form["productname"]
-        getprice = request.form["price"]
-        print(getcategory)
-        print(getproductname)
-        print(getprice)
-        try:
-            connection.execute("insert into admin(category,product_name,price)\
-                               values('" + getcategory + "','" + getproductname + "'," + getprice + ")")
-            connection.commit()
-            print(" Data Added Successfully.")
-            return redirect("/adminview")
-        except Exception as e:
-            print("Error occured ", e)
+            upload_image = request.files["image"]
+            if upload_image!='':
+                filepath = os.path.join(app.config['UPLOAD_FOLDER'],upload_image.filename)
+                upload_image.save(filepath)
+                getcategory = request.form["category"]
+                getproductname = request.form["productname"]
+                getprice = request.form["price"]
+                print(getcategory)
+                print(getproductname)
+                print(getprice)
+                try:
+                    cursor = connection.cursor()
+                    cursor.execute("insert into admin(category,product_name,price,image)\
+                                                   values('" + getcategory + "','" + getproductname + "'," + getprice + ",'" + upload_image.filename + "')")
+                    connection.commit()
+                    print(" Data Added Successfully.")
+                    return redirect("/adminview")
+                except Exception as e:
+                    print("Error occured ", e)
 
     return render_template("addproducts.html")
 
@@ -139,5 +145,5 @@ def admin_viewProducts():
     cursor.execute("select * from admin")
     result = cursor.fetchall()
     return render_template("admin_view.html", products=result)
-if __name__=="__main__":
+if __name__ == "__main__":
     app.run(debug=True)

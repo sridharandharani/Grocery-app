@@ -34,12 +34,19 @@
                 {% for i in products %}
                 <div class="col col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 col-xxl-12">
                   <div class="card" style="width: 18rem;">
-                      <img src="https://thumbs.dreamstime.com/z/book-icon-vector-design-library-symbol-web-graphic-jpg-ai-app-logo-object-flat-image-sign-eps-art-picture-stock-79808709.jpg" class="card-img-top" alt="...">
+                    <img src="/static/image/{{i[4]}}" class="card-img-top" alt="">
+                      <!-- <img src="https://thumbs.dreamstime.com/z/book-icon-vector-design-library-symbol-web-graphic-jpg-ai-app-logo-object-flat-image-sign-eps-art-picture-stock-79808709.jpg" class="card-img-top" alt="..."> -->
                       <div class="card-body">
-                        <h5 class="card-title">Category : {{i[3]}}</h5>
-                        <p class="card-text">Product Name : {{i[4]}}</p>
-                        <p class="card-text">Price : {{i[5]}}</p>
+                        <h5 class="card-title">Category : {{i[1]}}</h5>
+                        <!-- <p class="card-text">Product Name : {{i[4]}}</p>
+                        <p class="card-text">Price : {{i[5]}}</p> -->
                     </div>
+                    <ul class="list-group list-group-flush ">
+                        <!-- <li class="list-group-item text-white bg-dark mb-3"><center><b>Category: {{i[1]}}</b></center></li> -->
+                      <li class="list-group-item text-white bg-dark mb-3"><center>Product Name: {{i[2]}}</center></li>
+                      <li class="list-group-item text-white bg-dark mb-3"><center><b>Price: {{i[3]}}</b> </center> </li>
+                      
+                    </ul>
                     </div>
                   </div>
                 {% endfor %}
