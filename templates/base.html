@@ -24,15 +24,19 @@
 
 
     <div class="icons">
-           
-        <div class="fas fa-user" id="login-btn">
-            <a href="/adminlogin"><h5>Admin</h5></a>
-
-        </div>
-        
+        <div class="fas fa-user" id="login-btn"></div>
+        <nav class="navbar">
+            <a href="/userlogin">login</a>
+        </nav>
     </div>
-        
-    
+    <form action="" class="login-form">
+        <h3>login now</h3>
+        <input type="email" placeholder="your email" class="box">
+        <input type="password" placeholder="your password" class="box">
+        <p>don't have an account <a href="/register">create now</a></p>
+        <input type="submit" value="login now" class="btn">
+    </form>
+    <!-- <a href="/adminlogin"><h5>Admin</h5></a> -->
 
 </header>
 
@@ -46,6 +50,220 @@
     </div>
 
 </section>
+
+<!-- features section starts  -->
+
+<section class="features" id="features">
+
+    <h1 class="heading"> our <span>features</span> </h1>
+
+    <div class="box-container">
+
+        <div class="box">
+            <img src="image/feature-img-1.png" alt="">
+            <h3>fresh and organic</h3>
+            <p>We bring to you natural food at its best !</p>
+            <a href="#" class="btn">read more</a>
+        </div>
+
+        <div class="box">
+            <img src="image/feature-img-2.png" alt="">
+            <h3>free delivery</h3>
+            <p>Leave the grocery shopping to us.
+                Have your groceries delivered in just a few taps!</p>
+            <a href="#" class="btn">read more</a>
+        </div>
+
+        <div class="box">
+            <img src="image/feature-img-3.png" alt="">
+            <h3>easy payments</h3>
+            <p>Rediscover a great shopping tradition!</p>
+            <a href="#" class="btn">read more</a>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- features section ends -->
+
+<!-- products section ends -->
+
+<!-- categories section starts  -->
+
+<section class="categories" id="categories">
+
+    <h1 class="heading"> product <span>categories</span> </h1>
+
+    <div class="box-container">
+
+        <div class="box">
+            <img src="{{url_for('static', filename='image/cat-1.png')}}" alt="">
+            <h3>vegitables</h3>
+            <p>upto 45% off</p>
+            <a href="#" class="btn">shop now</a>
+        </div>
+
+        <div class="box">
+            <img src="{{url_for('static', filename='image/cat-2.png')}}" alt="">
+            <h3>fresh fruits</h3>
+            <p>upto 45% off</p>
+            <a href="#" class="btn">shop now</a>
+        </div>
+
+        <div class="box">
+            <img src="{{url_for('static', filename='image/cat-3.png')}}" alt="">
+            <h3>dairy products</h3>
+            <p>upto 45% off</p>
+            <a href="#" class="btn">shop now</a>
+        </div>
+
+        <div class="box">
+            <img src="{{url_for('static', filename='image/cat-4.png')}}" alt="">
+            <h3>fresh meat</h3>
+            <p>upto 45% off</p>
+            <a href="#" class="btn">shop now</a>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- categories section ends -->
+
+<!-- review section starts  -->
+
+<section class="review" id="review">
+
+    <h1 class="heading"> customer's <span>review</span> </h1>
+
+    <div class="swiper review-slider">
+
+        <div class="swiper-wrapper">
+
+            <div class="swiper-slide box">
+                <img src="{{url_for('static', filename='image/joys-pic-2.jpeg')}}" alt="">
+                <p>Hey, I must say that Wrap Up has made it so much easy to get groceries within minutes. .</p>
+                <h3>Joys Angel M</h3>
+                <div class="stars">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star-half-alt"></i>
+                </div>
+            </div>
+
+            <div class="swiper-slide box">
+                <img src="{{url_for('static', filename='image/sumanth-pic-1.jpeg')}}" alt="">
+                <p>Love the feature of getting groceries delivered within such short periods of time.</p>
+                <h3>Sumanth</h3>
+                <div class="stars">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star-half-alt"></i>
+                </div>
+            </div>
+
+            <div class="swiper-slide box">
+                <img src="{{url_for('static', filename='image/sameer-pic-3.jpeg')}}" alt="">
+                <p>We are busy people having no time to shop. Wrap Up solves our problem by delivering products at door step WHENEVER we want. Thank you Wrap Up!.</p>
+                <h3>Sameer</h3>
+                <div class="stars">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star-half-alt"></i>
+                </div>
+            </div>
+
+            <div class="swiper-slide box">
+                <img src="{{url_for('static', filename='image/leela-pic-4.jpeg')}}" alt="">
+                <p>Finally we found fresh, quality and affordable groceries here... Thank you Wrap Up  for your Amazing service </p>
+                <h3>Leela</h3>
+                <div class="stars">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star-half-alt"></i>
+                </div>
+            </div>
+
+            <div class="swiper-slide box">
+                <img src="{{url_for('static', filename='image/FullSizeRender.jpg')}}" alt="">
+                <p>App is easy to use and it's service is good too. They have categorized Products very well. Delivery is on time. All good and I would say even better.</p>
+                <h3>Sridharan T</h3>
+                <div class="stars">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star-half-alt"></i>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- review section ends -->
+
+
+<!-- footer section starts  -->
+
+<section class="footer">
+
+    <div class="box-container">
+
+        <div class="box">
+            <h3> Wrap Up <i class="fas fa-shopping-basket"></i> </h3>
+            <p> Enhance Marketing activities without human intervention</p>
+            <div class="share">
+                <a href="#" class="fab fa-facebook-f"></a>
+                <a href="#" class="fab fa-twitter"></a>
+                <a href="#" class="fab fa-instagram"></a>
+                <a href="#" class="fab fa-linkedin"></a>
+            </div>
+        </div>
+
+        <div class="box">
+            <h3>contact info</h3>
+            <a href="#" class="links"> <i class="fas fa-phone"></i> +91 123456789 </a>
+            <a href="#" class="links"> <i class="fas fa-phone"></i> +91 987655554 </a>
+            <a href="#" class="links"> <i class="fas fa-envelope"></i> Wrapup@gmail.com </a>
+            <a href="#" class="links"> <i class="fas fa-map-marker-alt"></i> mumbai, india - 400104 </a>
+        </div>
+
+        <div class="box">
+            <h3>quick links</h3>
+            <a href="#" class="links"> <i class="fas fa-arrow-right"></i> home </a>
+            <a href="#" class="links"> <i class="fas fa-arrow-right"></i> features </a>
+            <a href="#" class="links"> <i class="fas fa-arrow-right"></i> products </a>
+            <a href="#" class="links"> <i class="fas fa-arrow-right"></i> categories </a>
+            <a href="#" class="links"> <i class="fas fa-arrow-right"></i> review </a>
+        </div>
+
+        <div class="box">
+            <h3>newsletter</h3>
+            <p>subscribe for latest updates</p>
+            <input type="email" placeholder="your email" class="email">
+            <input type="submit" value="subscribe" class="btn">
+            <img src="image/payment.png" class="payment-img" alt="">
+        </div>
+
+    </div>
+
+    <div class="credit"> created by <span> Harman Batch 01 </span> | all rights reserved </div>
+
+</section>
+
+<!-- footer section ends -->
 <script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script>
 
 <script src="{{ url_for('static',filename='js/script.js') }}"></script>

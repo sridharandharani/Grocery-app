@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Admin Login</title>
+    <title>Payment</title>
 
     </head>
 <body>
@@ -18,29 +18,38 @@
           </button>
         </div>
     </nav>
-    <h1 class="heading" ><center>Admin <span> Login</span></center> </h1>
+    <h1 class="heading" ><center> Payment <span>Page</span></center> </h1>
 
     <div class="container">
         <div class="row">
             <div class="col col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 col-xxl-12">
-                <form action="/adminlogin" method="post">
-                    <tr>
-                        <td>Username</td>
-                        <td><input type="text" name="username" class="form-control"></td>
-                    </tr>
-                    <tr>
-                        <td>Password</td>
-                        <td><input type="password" name="pass" class="form-control"></td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td><button type="submit" class="btn btn-orange" >Login</button></td>
-                    </tr>
+                <form action="" method="post">
+                    <table class="table">
+                        <tr>
+                            <td>CARD NUMBER</td>
+                            <td><input type="number" name="cardnum" class="form-control"></td>
+                        </tr>
+                        <tr>
+                            <td>EXPIRY DATE</td>
+                            <td><input type="month" name="exp" class="form-control"></td>
+                        </tr>
+                        <tr>
+                            <td>CVV</td>
+                            <td><input type="number" name="CVV" class="form-control"></td>
+                        </tr>
+    
+                        <tr>
+                            <td></td>
+                            <td><button type="submit" class="btn btn-orange">PAY</button></td>
+                        </tr>
+
+                    </table>
+                    
                 </form>
             </div>
         </div>
     </div>
-    <!-- <script src="{{ url_for('static',filename='js/script.js') }}"></script> -->
+    <script src="{{ url_for('static',filename='js/script.js') }}"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 
 </body>
