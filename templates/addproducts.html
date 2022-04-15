@@ -8,11 +8,11 @@
     <title>Add Products</title>
 </head>
 <body>
-    <div class="d-flex justify-content-center bg-warning"><h2>Register Page</h2></div>
+    <div class="d-flex justify-content-center bg-warning"><h2>Add Product Page</h2></div>
     <div class="container">
         <div class="row">
             <div class="col col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 col-xxl-12">
-                <form action="/addproducts" method="post">
+                <form action="/addproducts" method="post" enctype="multipart/form-data">
                     <table class="table">
                         <tr>
                             <td>Category</td>
@@ -25,6 +25,12 @@
                         <tr>
                             <td>Price</td>
                             <td><input type="number" name="price" class="form-control"></td>
+                        </tr>
+                        <tr>
+                            <div class="mb-3"></div>
+                            <td><label for="formFileMultiple" class="form-label">Multiple files input</label></td>
+                            <td><input name="image" class="form-control" type="file" ></td>
+                        </div>
                         </tr>
                         <tr>
                             <td></td>
