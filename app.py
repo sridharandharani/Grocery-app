@@ -31,7 +31,8 @@ else:
                              password varchar,
                              category text,
                              product_name text,
-                             price integer
+                             price integer,
+                             image blob
 
                              );''')
     print("Table Created Successfully")
@@ -141,3 +142,4 @@ def admin_viewProducts():
     return render_template("admin_view.html", products=result)
 if __name__=="__main__":
     app.run(debug=True)
+
