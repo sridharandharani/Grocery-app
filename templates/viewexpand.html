@@ -17,6 +17,8 @@
     <link rel="stylesheet" href="css/style.css">
 
     <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/style.css') }}">
+
+    <title>Products</title>
 </head>
 <body>
 
@@ -27,30 +29,19 @@
 
 
         <!-- <div class="d-flex justify-content-center bg-primary"><h2>View all</h2></div> -->
-        <div class="container">
-            <div class="row">
-                {% for i in products %}
-                <div class="col col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 col-xxl-12">
-                  <div class="card" style="width: 18rem;">
-                    <img src="/static/image/{{i[4]}}" class="card-img-top" alt="">
-                      <!-- <img src="https://thumbs.dreamstime.com/z/book-icon-vector-design-library-symbol-web-graphic-jpg-ai-app-logo-object-flat-image-sign-eps-art-picture-stock-79808709.jpg" class="card-img-top" alt="..."> -->
-                      <div class="card-body">
-                        <h5 class="card-title">Category : {{i[1]}}</h5>
-                        <!-- <p class="card-text">Product Name : {{i[4]}}</p>
-                        <p class="card-text">Price : {{i[5]}}</p> -->
-                    </div>
-                    <ul class="list-group list-group-flush ">
-                        <!-- <li class="list-group-item text-white bg-dark mb-3"><center><b>Category: {{i[1]}}</b></center></li> -->
-                      <li class="list-group-item text-white bg-dark mb-3"><center>Product Name: {{i[2]}}</center></li>
-                      <li class="list-group-item text-white bg-dark mb-3"><center><b>Price: {{i[3]}}</b> </center> </li>
-                      
-                    </ul>
-                    </div>
-                  </div>
-                {% endfor %}
-            </div>
-            </div>
-        </div>
+        <div class="container"><div class="row"><div class="col col-12 col-sm-6 col-md-8 col-lg-10 col-xl-12 col-xxl-12">
+          <div class="col-4">
+              {% for i in product %}
+              <img src="static/image/{{i[4]}}" alt="" class="rounded float-start">
+              <h2>{{i[2]}}</h2>
+              <h5>{{i[1]}}</h5>
+              <h6>{{i[3]}}</h6>
+              <br>
+              <h5>&#x20B9{{i[3]}}</h5>
+              {% endfor %}
+          
+          </div>
+          </div></div></div>
         </form>
 
 
