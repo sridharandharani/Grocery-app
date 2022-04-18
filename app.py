@@ -219,7 +219,6 @@ def deletion():
     return render_template("deleteproducts.html")
 
 
-
 @app.route("/adminview")
 def admin_viewProducts():
     cursor = connection.cursor()
@@ -233,6 +232,43 @@ def user_viewProducts():
     cursor.execute("select * from admin")
     result = cursor.fetchall()
     return render_template("products.html", products=result)
+
+@app.route("/vegetables")
+def view_vegetables():
+    lower_amt = str(1)
+    higher_amt = str(50)
+    cursor = connection.cursor()
+    cursor.execute("Select * From admin Where price Between "+lower_amt+" And "+higher_amt)
+    result = cursor.fetchall()
+    return render_template("vegetables.html", products=result)
+
+@app.route("/fruits")
+def view_fruits():
+    lower_amt = str(100)
+    higher_amt = str(200)
+    cursor = connection.cursor()
+    cursor.execute("Select * From admin Where price Between "+lower_amt+" And "+higher_amt)
+    result = cursor.fetchall()
+    return render_template("fruits.html", products=result)
+
+@app.route("/dairy")
+def view_dairy():
+    lower_amt = str(51)
+    higher_amt = str(100)
+    cursor = connection.cursor()
+    cursor.execute("Select * From admin Where price Between "+lower_amt+" And "+higher_amt)
+    result = cursor.fetchall()
+    return render_template("dairy.html", products=result)
+
+@app.route("/meat")
+def view_meat():
+    lower_amt = str(201)
+    higher_amt = str(500)
+    cursor = connection.cursor()
+    cursor.execute("Select * From admin Where price Between "+lower_amt+" And "+higher_amt)
+    result = cursor.fetchall()
+    return render_template("meat.html", products=result)
+
 @app.route("/usersearch",methods=['GET', 'POST'])
 def user_search():
     cursor = connection.cursor()
@@ -276,7 +312,6 @@ def User_cart_View():
             print(i[0])
         return render_template("cartview.html",wrap=result,total=result1,status=True)
 
-
     except Exception as err:
         print(err)
     return render_template("cartview.html",wrap=[],status=False)
@@ -288,9 +323,11 @@ def View_expand():
     cursor.execute("select * from admin where id="+getid)
     result = cursor.fetchall()
     return render_template("viewexpand.html",product=result)
+
 @app.route('/usercheckout')
 def user_checkout():
     return render_template("checkout.html")
+
 @app.route('/finalcheckout')
 def user_finalcheckout():
     Uid = str(session["id"])
@@ -300,6 +337,11 @@ def user_finalcheckout():
     connection.commit()
     print("Cart cleared sucessfully")
     return redirect("https://rzp.io/l/dPzf0S9U")
+
+@app.route("/order")
+def Order_received():
+    cursor = connection.cursor()
+    cursor.execute("select * from ")
 
 if __name__ == "__main__":
     app.run(debug=True)
