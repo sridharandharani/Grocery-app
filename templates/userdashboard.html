@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wrap Up - User Dashboard</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css" />
+
+    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/style.css') }}">
+
+    <!-- font awesome cdn link  -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+    <!-- custom css file link  -->
+    <link rel="stylesheet" href="static/styles/style.css">
+
+</head>
+<body>
+
+<!-- header section starts  -->
+
+<header class="header">
+
+    <a style="text-decoration: none" href="#" class="logo"> <i class="fas fa-shopping-basket"></i> Wrap up </a>
+
+    <nav class="navbar">
+        <a style="text-decoration: none" href="/userdashboard">Home</a>
+        <a style="text-decoration: none" href="/products">Products</a>
+        <a style="text-decoration: none" href="#categories">Categories</a>
+        <a style="text-decoration: none" href="/order">Order</a>
+        <a style="text-decoration: none" href="/">Log out</a>
+    </nav>
+
+
+    <div class="icons">
+        <div class="fas fa-bars" id="menu-btn"></div>
+        <button type="submit" class="btn">
+            <div class="fas fa-search" id="search-btn"></div>
+        </button>
+        <button type="submit" class="btn"> <a style="text-decoration: none" href="/cartview">Wrap</a> 
+            <div class="fas fa-shopping-cart" id="cart-btn"></a></div></button>
+        <button type="submit" class="btn">
+            <div class="fas fa-user" id="login-btn"></div>
+        </button>
+        <figure class="text-end">
+            {% if session.name %}
+<h3>Welcome {{session.name}}</h3>
+{% else %}
+Not Yet Login
+{% endif %}
+        </figure>
+        
+    </div>
+
+    <form action="/userdashboard" method="post" class="search-form">
+        <input type="search"  name="pname" id="search-box" class="form-control" placeholder="search here...">
+        <button type="submit" class="btn" ><label  for="search-box" class="fas fa-search"></label></button>
+    </form>
+
+    
+
+
+
+</header>
+
+<!-- header section ends -->
+
+<!-- home section starts  -->
+
+<section class="home" id="home">
+
+    <div class="content">
+        <h3>fresh and <span>organic</span> products for your easy life</h3>
+        <p>Now the tension of choosing the best groceries is history.
+            Groceries are happy to be delivered to you.</p>
+    </div>
+
+</section>
+
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="col col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 col-xxl-12">
+                {% if status %}
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th scope="col">Category</th>
+                      <br>
+                      <th scope="col">Product Name</th>
+                      <br>
+                      <th scope="col">Price</th>
+                      <br>
+                    </tr>
+                    
+                  </thead>
+                  <tbody>
+                      {% for i in search %}
+                      <tr>
+                          
+                          <td>{{i[1]}}</td>
+                          <td>{{i[2]}}</td>
+                          <td>{{i[3]}}</td>
+                          <td><img height="250" width="5" src="/static/image/{{i[4]}}" class="card-img-top" alt=""></td>
+                      </tr>
+                      {% endfor %}
+                    
+                  </tbody>
+                </table>
+                
+    
+                {% endif %}
+    
+        
+            </div>
+        </div>
+            </div>
+</section>
+
+<!-- home section ends -->
+
+<!-- features section starts  -->
+
+<section class="features" id="features">
+
+    <h1 class="heading"> our <span>features</span> </h1>
+
+    <div class="box-container">
+
+        <div class="box">
+            <img src="image/feature-img-1.png" alt="">
+            <h3>fresh and organic</h3>
+            <p>We bring to you natural food at its best !</p>
+            <a href="#" class="btn">read more</a>
+        </div>
+
+        <div class="box">
+            <img src="image/feature-img-2.png" alt="">
+            <h3>free delivery</h3>
+            <p>Leave the grocery shopping to us.
+                Have your groceries delivered in just a few taps!</p>
+            <a href="#" class="btn">read more</a>
+        </div>
+
+        <div class="box">
+            <img src="image/feature-img-3.png" alt="">
+            <h3>easy payments</h3>
+            <p>Rediscover a great shopping tradition!</p>
+            <a href="#" class="btn">read more</a>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- features section ends -->
+
+<!-- products section starts  -->
+
+<section class="products" id="products">
+
+    <h1 class="heading"> our <span>products</span> </h1>
+
+    <div class="swiper product-slider">
+
+        <div class="swiper-wrapper">
+
+            <div class="swiper-slide box">
+                <img src="{{url_for('static', filename='image/product-1.png')}}" alt="">
+                <h3>fresh orange</h3>
+                <div class="price"> ₹53/- - ₹103/- </div>
+                <div class="stars">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star-half-alt"></i>
+                </div>
+                <a href="/cart" class="btn">add to cart</a>
+            </div>
+
+            <div class="swiper-slide box">
+                <img src="{{url_for('static', filename='image/product-2.png')}}" alt="">
+                <h3>fresh onion</h3>
+                <div class="price"> ₹30/- - ₹90/- </div>
+                <div class="stars">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star-half-alt"></i>
+                </div>
+                <a href="/cart" class="btn">add to cart</a>
+            </div>
+
+            <div class="swiper-slide box">
+                <img src="{{url_for('static', filename='image/product-3.png')}}" alt="">
+                <h3>fresh meat</h3>
+                <div class="price"> ₹150/- - ₹280/- </div>
+                <div class="stars">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star-half-alt"></i>
+                </div>
+                <a href="/cart" class="btn">add to cart</a>
+            </div>
+
+            <div class="swiper-slide box">
+                <img src="{{url_for('static', filename='image/product-4.png')}}" alt="">
+                <h3>fresh cabbage</h3>
+                <div class="price"> ₹12/- - ₹28/- </div>
+                <div class="stars">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star-half-alt"></i>
+                </div>
+                <a href="/cart" class="btn">add to cart</a>
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="swiper product-slider">
+
+        <div class="swiper-wrapper">
+
+            <div class="swiper-slide box">
+                <img src="{{url_for('static', filename='image/product-5.png')}}" alt="">
+                <h3>fresh potato</h3>
+                <div class="price"> ₹8/- - ₹22/- </div>
+                <div class="stars">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star-half-alt"></i>
+                </div>
+                <a href="/cart" class="btn">add to cart</a>
+            </div>
+
+            <div class="swiper-slide box">
+                <img src="{{url_for('static', filename='image/product-6.png')}}" alt="">
+                <h3>fresh avocado</h3>
+                <div class="price"> ₹89/- - 165/- </div>
+                <div class="stars">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star-half-alt"></i>
+                </div>
+                <a href="/cart" class="btn">add to cart</a>
+            </div>
+
+            <div class="swiper-slide box">
+                <img src="{{url_for('static', filename='image/product-7.png')}}" alt="">
+                <h3>fresh carrot</h3>
+                <div class="price"> ₹45/- - ₹73/- </div>
+                <div class="stars">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star-half-alt"></i>
+                </div>
+                <a href="/cart" class="btn">add to cart</a>
+            </div>
+
+            <div class="swiper-slide box">
+                <img src="{{url_for('static', filename='image/product-8.png')}}" alt="">
+                <h3>green lemon</h3>
+                <div class="price"> ₹12/- - ₹20/- </div>
+                <div class="stars">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star-half-alt"></i>
+                </div>
+                <a href="/cart" class="btn">add to cart</a>
+            </div>
+
+        </div>
+
+    </div>
+
+
+</section>
+
+<!-- products section ends -->
+
+<!-- categories section starts  -->
+
+<section class="categories" id="categories">
+
+    <h1 class="heading"> product <span>categories</span> </h1>
+
+    <div class="box-container">
+
+        <div class="box">
+            <img src="{{url_for('static', filename='image/cat-1.png')}}" alt="">
+            <h3>vegetables</h3>
+            <p>upto 45% off</p>
+            <a href="/vegetables" class="btn">shop now</a>
+        </div>
+
+        <div class="box">
+            <img src="{{url_for('static', filename='image/cat-2.png')}}" alt="">
+            <h3>fresh fruits</h3>
+            <p>upto 45% off</p>
+            <a href="/fruits" class="btn">shop now</a>
+        </div>
+
+        <div class="box">
+            <img src="{{url_for('static', filename='image/cat-3.png')}}" alt="">
+            <h3>dairy products</h3>
+            <p>upto 45% off</p>
+            <a href="/dairy" class="btn">shop now</a>
+        </div>
+
+        <div class="box">
+            <img src="{{url_for('static', filename='image/cat-4.png')}}" alt="">
+            <h3>fresh meat</h3>
+            <p>upto 45% off</p>
+            <a href="/meat" class="btn">shop now</a>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- categories section ends -->
+
+<!-- review section starts  -->
+
+<section class="review" id="review">
+
+    <h1 class="heading"> customer's <span>review</span> </h1>
+
+    <div class="swiper review-slider">
+
+        <div class="swiper-wrapper">
+
+            <div class="swiper-slide box">
+                <img src="{{url_for('static', filename='image/joys-pic-2.jpeg')}}" alt="">
+                <p>Hey, I must say that Wrap Up has made it so much easy to get groceries within minutes. .</p>
+                <h3>Joys Angel M</h3>
+                <div class="stars">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star-half-alt"></i>
+                </div>
+            </div>
+
+            <div class="swiper-slide box">
+                <img src="{{url_for('static', filename='image/sumanth-pic-1.jpeg')}}" alt="">
+                <p>Love the feature of getting groceries delivered within such short periods of time.</p>
+                <h3>Sumanth</h3>
+                <div class="stars">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star-half-alt"></i>
+                </div>
+            </div>
+
+            <div class="swiper-slide box">
+                <img src="{{url_for('static', filename='image/sameer-pic-3.jpeg')}}" alt="">
+                <p>We are busy people having no time to shop. Wrap Up solves our problem by delivering products at door step WHENEVER we want. Thank you Wrap Up!.</p>
+                <h3>Sameer</h3>
+                <div class="stars">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star-half-alt"></i>
+                </div>
+            </div>
+
+            <div class="swiper-slide box">
+                <img src="{{url_for('static', filename='image/leela-pic-4.jpeg')}}" alt="">
+                <p>Finally we found fresh, quality and affordable groceries here... Thank you Wrap Up  for your Amazing service </p>
+                <h3>Leela</h3>
+                <div class="stars">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star-half-alt"></i>
+                </div>
+            </div>
+
+            <div class="swiper-slide box">
+                <img src="{{url_for('static', filename='image/FullSizeRender.jpg')}}" alt="">
+                <p>App is easy to use and it's service is good too. They have categorized Products very well. Delivery is on time. All good and I would say even better.</p>
+                <h3>Sridharan T</h3>
+                <div class="stars">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star-half-alt"></i>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- review section ends -->
+
+
+<!-- footer section starts  -->
+
+<section class="footer">
+
+    <div class="box-container">
+
+        <div class="box">
+            <h3> Wrap Up <i class="fas fa-shopping-basket"></i> </h3>
+            <p> Enhance Marketing activities without human intervention</p>
+            <div class="share">
+                <a href="#" class="fab fa-facebook-f"></a>
+                <a href="#" class="fab fa-twitter"></a>
+                <a href="#" class="fab fa-instagram"></a>
+                <a href="#" class="fab fa-linkedin"></a>
+            </div>
+        </div>
+
+        <div class="box">
+            <h3>contact info</h3>
+            <a href="#" class="links"> <i class="fas fa-phone"></i> +91 123456789 </a>
+            <a href="#" class="links"> <i class="fas fa-phone"></i> +91 987655554 </a>
+            <a href="#" class="links"> <i class="fas fa-envelope"></i> Wrapup@gmail.com </a>
+            <a href="#" class="links"> <i class="fas fa-map-marker-alt"></i> mumbai, india - 400104 </a>
+        </div>
+
+        <div class="box">
+            <h3>quick links</h3>
+            <a href="#" class="links"> <i class="fas fa-arrow-right"></i> home </a>
+            <a href="#" class="links"> <i class="fas fa-arrow-right"></i> features </a>
+            <a href="#" class="links"> <i class="fas fa-arrow-right"></i> products </a>
+            <a href="#" class="links"> <i class="fas fa-arrow-right"></i> categories </a>
+            <a href="#" class="links"> <i class="fas fa-arrow-right"></i> review </a>
+        </div>
+
+        <div class="box">
+            <h3>newsletter</h3>
+            <p>subscribe for latest updates</p>
+            <input type="email" placeholder="your email" class="email">
+            <input type="submit" value="subscribe" class="btn">
+            <img src="image/payment.png" class="payment-img" alt="">
+        </div>
+
+    </div>
+
+    <div class="credit"> created by <span> Harman Batch 01 </span> | all rights reserved </div>
+
+</section>
+
+<!-- footer section ends -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script>
+
+<script src="{{ url_for('static',filename='js/script.js') }}"></script>
+
+</body>
+</html>

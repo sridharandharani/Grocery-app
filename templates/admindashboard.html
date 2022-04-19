@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wrap Up - Admin Dashboard</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css" />
+
+    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/style.css') }}">
+
+    <!-- font awesome cdn link  -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+    <!-- custom css file link  -->
+    <link rel="stylesheet" href="css/style.css">
+
+</head>
+<body>
+
+<!-- header section starts  -->
+
+<header class="header">
+
+    <a style="text-decoration: none" href="#" class="logo"> <i class="fas fa-shopping-basket"></i> Wrap up </a>
+
+    <nav class="navbar">
+        <a style="text-decoration: none" href="/addproducts">Add</a>
+        <a style="text-decoration: none" href="/adminview">View all</a>
+        <a style="text-decoration: none" href="/delete">Delete</a>
+        <a style="text-decoration: none" href="/">Log out</a>
+    </nav>
+
+
+    <div class="icons">
+        <div class="fas fa-bars" id="menu-btn"></div>
+        <div class="fas fa-search" id="search-btn"></div>
+        <div class="fas fa-user" id="login-btn"></div>
+        <h3>Hello Admin</h3>
+    </div>
+
+    <form action="/admindashboard" method="post" class="search-form">
+        <input type="search"  name="pname" id="search-box" class="form-control" placeholder="search here...">
+        <button type="submit" class="btn" ><label  for="search-box" class="fas fa-search"></label></button>
+    </form>
+    
+
+
+
+</header>
+
+
+
+<!-- header section ends -->
+
+<!-- home section starts  -->
+
+<section class="home" id="home">
+
+    <div class="content">
+        <h3>fresh and <span>organic</span> products for your easy life</h3>
+        <p>Now the tension of choosing the best groceries is history.
+            Groceries are happy to be delivered to you.</p>
+    </div>
+
+</section>
+
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="col col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 col-xxl-12">
+                {% if status %}
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th scope="col">Category</th>
+                      <br>
+                      <th scope="col">Product Name</th>
+                      <br>
+                      <th scope="col">Price</th>
+                      <br>
+                    </tr>
+                    
+                  </thead>
+                  <tbody>
+                      {% for i in search %}
+                      <tr>
+                          
+                          <td>{{i[1]}}</td>
+                          <td>{{i[2]}}</td>
+                          <td>{{i[3]}}</td>
+                          <td><img height="150" width="5" src="/static/image/{{i[4]}}" class="card-img-top" alt=""></td>
+                      </tr>
+                      {% endfor %}
+                    
+                  </tbody>
+                </table>
+                
+    
+                {% endif %}
+    
+        
+            </div>
+        </div>
+            </div>
+</section>
+
+
+
+<!-- footer section starts  -->
+
+<section class="footer">
+
+    <div class="box-container">
+
+        <div class="box">
+            <h3> Wrap Up <i class="fas fa-shopping-basket"></i> </h3>
+            <p> Enhance Marketing activities without human intervention</p>
+            <div class="share">
+                <a href="#" class="fab fa-facebook-f"></a>
+                <a href="#" class="fab fa-twitter"></a>
+                <a href="#" class="fab fa-instagram"></a>
+                <a href="#" class="fab fa-linkedin"></a>
+            </div>
+        </div>
+
+        <div class="box">
+            <h3>contact info</h3>
+            <a href="#" class="links"> <i class="fas fa-phone"></i> +91 123456789 </a>
+            <a href="#" class="links"> <i class="fas fa-phone"></i> +91 987655554 </a>
+            <a href="#" class="links"> <i class="fas fa-envelope"></i> Wrapup@gmail.com </a>
+            <a href="#" class="links"> <i class="fas fa-map-marker-alt"></i> mumbai, india - 400104 </a>
+        </div>
+
+        <div class="box">
+            <h3>quick links</h3>
+            <a href="#" class="links"> <i class="fas fa-arrow-right"></i> home </a>
+            <a href="#" class="links"> <i class="fas fa-arrow-right"></i> features </a>
+            <a href="#" class="links"> <i class="fas fa-arrow-right"></i> products </a>
+            <a href="#" class="links"> <i class="fas fa-arrow-right"></i> categories </a>
+            <a href="#" class="links"> <i class="fas fa-arrow-right"></i> review </a>
+        </div>
+
+        <div class="box">
+            <h3>newsletter</h3>
+            <p>subscribe for latest updates</p>
+            <input type="email" placeholder="your email" class="email">
+            <input type="submit" value="subscribe" class="btn">
+            <img src="image/payment.png" class="payment-img" alt="">
+        </div>
+
+    </div>
+
+    <div class="credit"> created by <span> Harman Batch 01 </span> | all rights reserved </div>
+
+</section>
+
+<!-- footer section ends -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script>
+
+<script src="{{ url_for('static',filename='js/script.js') }}"></script>
+
+</body>
+</html>
