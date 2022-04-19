@@ -15,9 +15,10 @@
 
     <!-- custom css file link  -->
     <link rel="stylesheet" href="css/style.css">
+
+    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/style.css') }}">
 </head>
 <body>
-    <div class="p-3 mb-2 bg-secondary text-dark"><section class="register" id="register">
 
         <h1 class="heading"> User <span>Register</span> </h1>
     </section>
@@ -45,6 +46,10 @@
                         <tr>
                             <td></td>
                             <td><button type="submit" class="btn btn-orange">Register</button></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td><h3> To User Login </h3><a style="text-decoration: none" href="/userlogin"> <h4>click here</h4></a></td>
                         </tr>
 
                 </table></form>

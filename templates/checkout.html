@@ -5,43 +5,33 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Wrap up - User Login</title>
+    <title>Wrap Up - Checkout</title>
 
     <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css" />
 
-    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/style.css') }}">
     <!-- font awesome cdn link  -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 
+    <!-- custom css file link  -->
+    <link rel="stylesheet" href="css/style.css">
 
     <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/style.css') }}">
+    <title>Checkout Page</title>
 </head>
-
 <body>
-    
-    <h1 class="heading"><center>User <span> Login </span></center> </h1>
-
+    <h1 class="heading"> checkout <span>Page</span></h1>
     <div class="container">
         <div class="row">
             <div class="col col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 col-xxl-12">
-                <form  action="/userlogin" method="post">
+                <form action="/finalcheckout">
                     <table class="table">
                         <tr>
-                            <td><h1>Email</h1></td>
-                            <td><input type="text" name="email" class="form-control"></td>
-                        </tr>
-                        <tr>
-                            <td><h1>Password</h1></td>
-                            <td><input type="password" name="password" class="form-control"></td>
+                            <td><h1>Delivery Address</h1></td>
+                            <td><input type="text" name="address" id="" class="form-control"></td>
                         </tr>
                         <tr>
                             <td></td>
-                            <td><button type="submit" class="btn btn-success">Login</button></td>
-                        </tr>
-                        <tr>
-                            <td></td>
-                            <td><h3>Don't Have An Account? </h3><a style="text-decoration: none" href="/register"> <h4>create now</h4></a></td>
+                            <td><button type="submit" name="button" class="btn btn-warning">Checkout</button></td>
                         </tr>
                     </table>
                 </form>
@@ -50,6 +40,5 @@
     </div>
     <script src="{{ url_for('static',filename='js/script.js') }}"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-
 </body>
 </html>

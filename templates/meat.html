@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wrap Up - Products</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css" />
+
+    <!-- font awesome cdn link  -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+    <!-- custom css file link  -->
+    <link rel="stylesheet" href="css/style.css">
+
+    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/style.css') }}">
+
+    <title>Products</title>
+</head>
+<body>
+
+    <h1 class="heading"> Our<span>Products</span></h1>
+    <div class="collapse" id="navbarToggleExternalContent">
+      <div class="bg-dark p-4" style="background-color: #fd7e14;">
+        <h5 class="text-white h4"><ul class="navbar-nav" style="padding: 20px;">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="/vegetables"> <p style="color: #fd7e14;">Vegetables</p> </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="/fruits"><p style="color: #fd7e14;">Fruits</p></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="/dairy"><p style="color: #fd7e14;">Dairy</p></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active " href="/meat"><p style="color: #fd7e14;">Meat</p></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="/products"><p style="color: #fd7e14;">View All Products</p></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="/userdashboard"><p style="color: #fd7e14;">Home</p></a>
+          </li>
+        </ul></h5>
+        <span class="text-muted">Product Categories</span>
+      </div>
+    </div>
+    <nav class="navbar navbar-dark " style="background-color: #fd7e14;">
+      <div class="container-fluid">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      </div>
+    </nav>
+
+    <div class="container">
+      <div class="row">
+        <div class="col col-12 col-sm-8 col-md-6 col-lg-4 col-xl-4 col-xxl-3" >
+          <form action="/usersearch" method="post" class="search-form">
+            <input type="search"  name="pname" id="search-box" class="form-control" placeholder="search here...">
+            <button type="submit" class="btn" ><label  for="search-box" class="fas fa-search"></label></button>
+        </form>
+
+
+
+        <div class="container">
+            <div class="row">
+                {% for i in products %}
+                <div class="col col-12 col-sm-8 col-md-6 col-lg-4 col-xl-4 col-xxl-3">
+                  <br>
+                  <br>
+                  <div class="card" style="width: 24rem;">
+                    <img src="/static/image/{{i[4]}}" style="display: inline" class="card-img-top" width="200px" height="200px" alt="">
+                      <div class="card-body">
+                        <center>
+                          <h5 class="card-title">Category:{{i[1]}}</h5>
+                        </center>
+                    </div>
+                    <ul class="list-group list-group-flush ">
+                      <li class="list-group-item text-white bg-dark mb-3"><center>Product Name: {{i[2]}}</center></li>
+                      <li class="list-group-item text-white bg-dark mb-3"><center><b>Price:Rs {{i[3]}}</b> </center> </li>
+                        <form action="/cart" method="post">
+                            <button  type="submit" class="btn btn-warning"> <a style="text-decoration:none" href="/cart?id={{i[0]}}">Add to Wrap</a> </button>
+                        </form>
+
+
+                    </ul>
+                    </div>
+                  </div>
+                {% endfor %}
+            </div>
+            </div>
+        </div>
+        </form>
+
+
+
+    <script src="{{ url_for('static',filename='js/script.js') }}"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+</body>
+</html>
