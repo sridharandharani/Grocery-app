@@ -706,4 +706,7 @@ section{
         height: 150px;
     }
 
+    .highlight{
+        text-decoration: none;
+    }
 }

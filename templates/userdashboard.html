@@ -15,7 +15,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 
     <!-- custom css file link  -->
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="static/styles/style.css">
 
 </head>
 <body>
@@ -24,14 +24,14 @@
 
 <header class="header">
 
-    <a href="#" class="logo"> <i class="fas fa-shopping-basket"></i> Wrap up </a>
+    <a style="text-decoration: none" href="#" class="logo"> <i class="fas fa-shopping-basket"></i> Wrap up </a>
 
     <nav class="navbar">
-        <a href="/userdashboard">Home</a>
-        <a href="#features">Features</a>
-        <a href="/products">Products</a>
-        <a href="#categories">Categories</a>
-        <a href="/">Log out</a>
+        <a style="text-decoration: none" href="/userdashboard">Home</a>
+        <a style="text-decoration: none" href="#features">Features</a>
+        <a style="text-decoration: none" href="/products">Products</a>
+        <a style="text-decoration: none" href="#categories">Categories</a>
+        <a style="text-decoration: none" href="/">Log out</a>
     </nav>
 
 
@@ -40,7 +40,7 @@
         <button type="submit" class="btn">
             <div class="fas fa-search" id="search-btn"></div>
         </button>
-        <button type="submit" class="btn"> <a href="/cartview">Wrap</a> 
+        <button type="submit" class="btn"> <a style="text-decoration: none" href="/cartview">Wrap</a> 
             <div class="fas fa-shopping-cart" id="cart-btn"></a></div></button>
         <button type="submit" class="btn">
             <div class="fas fa-user" id="login-btn"></div>
@@ -310,28 +310,28 @@ Not Yet Login
             <img src="{{url_for('static', filename='image/cat-1.png')}}" alt="">
             <h3>vegitables</h3>
             <p>upto 45% off</p>
-            <a href="#" class="btn">shop now</a>
+            <a href="/vegetables" class="btn">shop now</a>
         </div>
 
         <div class="box">
             <img src="{{url_for('static', filename='image/cat-2.png')}}" alt="">
             <h3>fresh fruits</h3>
             <p>upto 45% off</p>
-            <a href="#" class="btn">shop now</a>
+            <a href="/fruits" class="btn">shop now</a>
         </div>
 
         <div class="box">
             <img src="{{url_for('static', filename='image/cat-3.png')}}" alt="">
             <h3>dairy products</h3>
             <p>upto 45% off</p>
-            <a href="#" class="btn">shop now</a>
+            <a href="/dairy" class="btn">shop now</a>
         </div>
 
         <div class="box">
             <img src="{{url_for('static', filename='image/cat-4.png')}}" alt="">
             <h3>fresh meat</h3>
             <p>upto 45% off</p>
-            <a href="#" class="btn">shop now</a>
+            <a href="/meat" class="btn">shop now</a>
         </div>
 
     </div>
