@@ -623,11 +623,22 @@ section{
     color:var(--orange);
 }
 
+/* .colcol-12col-sm-8col-md-6col-lg-4col-xl-4col-xxl-3{
+    flex-basis: 25%;
+    margin-bottom: 50px;
+    transition: transform 0.5s;
+} */
 
-
-
-
-
+/* .Products .container .card{
+    flex-basis: 30%;
+    min-width: 200px;
+    padding: 10px;
+    margin-bottom: 50px;
+    transition: transform 0.5s;
+} 
+.Products .container .card{
+    transform: translateY(-5px);
+} */
 
 
 
