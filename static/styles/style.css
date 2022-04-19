@@ -54,7 +54,7 @@ section{
 .btn{
     margin-top: 1rem;
     display: inline-block;
-    padding:.8rem 3rem;
+    padding:.4rem 2rem;
     font-size: 1.7rem;
     border-radius: .5rem;
     border:.2rem solid var(--black);
@@ -623,6 +623,51 @@ section{
     color:var(--orange);
 }
 
+/* body {
+    background-color: #eee
+}
+
+.date {
+    font-size: 11px
+}
+
+.divider {
+    height: 0px !important;
+    background-color: blue
+}
+
+.track-line {
+    height: 2px !important;
+    background-color: green
+}
+
+.dot {
+    height: 10px;
+    width: 10px;
+    margin-left: 3px;
+    margin-right: 3px;
+    margin-top: 0px;
+    background-color: green;
+    border-radius: 50%;
+    display: inline-block
+}
+
+.big-dot {
+    height: 25px;
+    width: 25px;
+    margin-left: 0px;
+    margin-right: 0px;
+    margin-top: 0px;
+    background-color: green;
+    border-radius: 50%;
+    display: inline-block
+}
+
+.big-dot i {
+    font-size: 12px
+} */
+
+
 
 
 
@@ -709,4 +754,5 @@ section{
     .highlight{
         text-decoration: none;
     }
+    
 }

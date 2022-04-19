@@ -1,5 +1,6 @@
 import os.path
 
+import razorpay
 from flask import Flask, render_template, request, session
 from flask_session import Session
 import sqlite3 as sql
@@ -11,7 +12,9 @@ connection = sql.connect("Wrapup.db", check_same_thread=False)
 
 listofusers = connection.execute("select name from sqlite_master where type='table' AND name='user'").fetchall()
 listofproducts = connection.execute("select name from sqlite_master where type='table' AND name='admin'").fetchall()
-listofwrap = connection.execute("select * from sqlite_master where type = 'table' and name = 'wrap'").fetchall()
+listofwrap = connection.execute("select * from sqlite_master where type='table' AND name='wrap'").fetchall()
+listofbuy = connection.execute("select * from sqlite_master where type='table' AND name='buy'").fetchall()
+
 
 if listofusers != []:
     print("Table exist already")
@@ -45,6 +48,14 @@ else:
                                 ID integer primary key autoincrement,
                                 admin_product_id integer,
                                 user_id text );''')
+
+if listofbuy !=[]:
+    print("order table already exits")
+else:
+    connection.execute('''create table buy(
+                                    ID integer primary key autoincrement,
+                                    admin_product_id integer,
+                                    user_id text );''')
 
 
 app = Flask(__name__)
@@ -291,6 +302,7 @@ def User_cart():
         getUid = Uid
         cursor = connection.cursor()
         cursor.execute("insert into wrap(admin_product_id,user_id) values("+getPid+",'"+getUid+"')")
+        cursor.execute("insert into buy(admin_product_id,user_id) values(" + getPid + ",'" + getUid + "')")
         connection.commit()
         print("Products added to cart successfully")
 
@@ -308,6 +320,11 @@ def User_cart_View():
         result = cursor.fetchall()
         cursor.execute("select sum(price) as price from admin a join wrap w on w.admin_product_id = a.id where w.user_id="+getUid)
         result1 = cursor.fetchall()
+        cursor.execute("select * FROM admin a join buy b on b.admin_product_id=a.id where b.user_id=" + getUid)
+        resultbuy = cursor.fetchall()
+        cursor.execute(
+            "select sum(price) as price from admin a join buy b on b.admin_product_id = a.id where b.user_id=" + getUid)
+        resultbuy1 = cursor.fetchall()
         for i in result1:
             print(i[0])
         return render_template("cartview.html",wrap=result,total=result1,status=True)
@@ -336,12 +353,44 @@ def user_finalcheckout():
     cursor.execute("delete from wrap where user_id=" + getUid)
     connection.commit()
     print("Cart cleared sucessfully")
-    return redirect("https://rzp.io/l/dPzf0S9U")
+    return redirect("/payment")
 
+@app.route("/payment")
+def user_payment():
+    return render_template("payment.html")
+
+# @app.route("/pay",methods=["POST"])
+# def pay():
+#     global payment , name
+#     name = request.form.get("username")
+#     client = razorpay.Client(auth=("rzp_test_6CbnsHoTB6FPPT","BAvPHiEWU2akNPN3l8odirVe"))
+#
+#     data = {"amount": 500, "currency": "INR", "receipt": "order_rcptid_11"}
+#     payment = client.order.create(data=data)
+#     return render_template()
 @app.route("/order")
-def Order_received():
-    cursor = connection.cursor()
-    cursor.execute("select * from ")
+def Order_placed():
+    try:
+        getUid = Uid
+        cursor = connection.cursor()
+        cursor.execute("select * FROM admin a join buy b on b.admin_product_id=a.id where b.user_id="+getUid)
+        resultbuy = cursor.fetchall()
+        # cursor.execute("select sum(price) as price from admin a join buy b on b.admin_product_id = a.id where b.user_id="+getUid)
+        # resultbuy1 = cursor.fetchall()
+        # for i in resultbuy1:
+        #     print(i[0])
+        return render_template("order.html",order=resultbuy,status=True)
+
+    except Exception as err:
+        print(err)
+    return render_template("order.html",order=[],status=False)
+
+@app.route("/tracking")
+def view_track():
+    return render_template("tracking.html")
+
+
+
 
 if __name__ == "__main__":
     app.run(debug=True)
