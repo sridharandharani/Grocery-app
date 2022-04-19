@@ -22,33 +22,38 @@
 </head>
 <body>
 
-      <h3 class="heading"> Our<span>Products</span></h3>
-     <h1> <nav class="navbar navbar-expand-lg navbar-light" style="background-color: rgb(241, 111, 18);">
+      <h3 class="heading"> Our<span>Products</span></h3><div class="collapse" id="navbarToggleExternalContent">
+        <div class="bg-dark p-4" style="background-color: #fd7e14;">
+          <h5 class="text-white h4"><ul class="navbar-nav" style="padding: 20px;">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="/vegetables"> <p style="color: #fd7e14;">Vegetables</p> </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="/fruits"><p style="color: #fd7e14;">Fruits</p></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="/dairy"><p style="color: #fd7e14;">Dairy</p></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active " href="/meat"><p style="color: #fd7e14;">Meat</p></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="/products"><p style="color: #fd7e14;">View All Products</p></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="/userdashboard"><p style="color: #fd7e14;">Home</p></a>
+            </li>
+          </ul></h5>
+          <span class="text-muted">Product Categories</span>
+        </div>
+      </div>
+      <nav class="navbar navbar-dark " style="background-color: #fd7e14;">
         <div class="container-fluid">
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
-          <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav">
-              <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="/vegetables">vegetables</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link active" href="/fruits">Fruits</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link active" href="/dairy">Dairy</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link active " href="/meat">Meat</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="/products">View all Products</a>
-              </li>
-            </ul>
-          </div>
         </div>
-      </nav> </h1>
+      </nav>
     
   
   
@@ -72,7 +77,7 @@
                 <div class="col col-12 col-sm-8 col-md-6 col-lg-4 col-xl-4 col-xxl-3">
                   <br>
                   <br>
-                  <div class="card" style="width: 18rem;">
+                  <div class="card" style="width: 24rem;">
                     <img src="/static/image/{{i[4]}}" style="display: inline" class="card-img-top" width="200px" height="200px" alt="">
                       <div class="card-body">
                         <center>
@@ -84,7 +89,6 @@
                       <li class="list-group-item text-white bg-dark mb-3"><center><b>Price:Rs {{i[3]}}</b> </center> </li>
                         <form action="/cart" method="post">
                             <button  type="submit" class="btn btn-warning"> <a style="text-decoration:none" href="/cart?id={{i[0]}}">Add to Wrap</a> </button>
-                      <!-- <button type="submit" class="btn btn-warning">Buy Now</button> -->
                         </form>
 
 

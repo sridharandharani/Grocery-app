@@ -43,11 +43,15 @@
                   <tbody>
                       {% for i in search %}
                       <tr>
+                        
 
                           <td>{{i[1]}}</td>
                           <td>{{i[2]}}</td>
                           <td>{{i[3]}}</td>
                           <td><img height="150" width="5" src="/static/image/{{i[4]}}" class="card-img-top" alt=""></td>
+                          <form action="/cart" method="post">
+                            <button  type="submit" class="btn btn-warning"> <a style="text-decoration:none" href="/cart?id={{i[0]}}">Add to Wrap</a> </button>
+                          </form>
                       </tr>
                       {% endfor %}
 
