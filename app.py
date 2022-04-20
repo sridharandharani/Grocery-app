@@ -333,6 +333,21 @@ def User_cart_View():
         print(err)
     return render_template("cartview.html",wrap=[],status=False)
 
+@app.route("/deletecart",methods=['GET','POST'])
+def delete_cart():
+    try:
+        getPid = request.args.get('id')
+        Uid = str(session["id"])
+        getUid = Uid
+        cursor = connection.cursor()
+        cursor.execute("delete from wrap where admin_product_id=" + getPid + " and user_id='" + getUid + "'")
+        connection.commit()
+        print("Product deleted from cart")
+
+    except Exception as err:
+        print(err)
+    return redirect('/cartview')
+
 @app.route("/viewexpand")
 def View_expand():
     getid = request.args.get('id')
