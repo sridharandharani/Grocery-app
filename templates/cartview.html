@@ -60,22 +60,22 @@
 <div class="container">
   <div class="row">
       {% for i in wrap %}
-      <div class="col col-12 col-sm-8 col-md-6 col-lg-4 col-xl-4 col-xxl-3">
+      <div class="col col-12 col-sm-6 col-md-6 col-lg-4 col-xl-4 col-xxl-3">
           <br>
           <center>
-              <div class="card" style="width: 18rem;">
+              <div class="card" style="width: 24rem;">
                   <img src="/static/image/{{i[4]}}" class="card-img-top" width="200px" height="200px" alt="..." >
                   <div class="card-body">
                       <center> <h5 class="card-title"><a style="color:black; font-size:25px; text-decoration:none;" href="/viewexpand?id={{i[0]}}">{{i[2]}}</a></h5></center>
   
                   </div>
                   <ul class="list-group list-group-flush">
-                    <li class="list-group-item">{{i[2]}}</li>
-                    <li class="list-group-item">Rs.{{i[3]}}</li>
+                    <li class="list-group-item text-white bg-dark mb-3">{{i[2]}}</li>
+                    <li class="list-group-item text-white bg-dark mb-3">Rs.{{i[3]}}</li>
                   </ul>
-                  <div class="card-body">
+                  <!-- <div class="card-body">
                     <a href="#" class="btn btn-outline-primary">Buy Now</a>&nbsp;&nbsp;&nbsp;
-                  </div>
+                  </div> -->
                 </div>
           </center>
             

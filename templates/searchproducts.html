@@ -23,6 +23,8 @@
 <body>
 
     <h1 class="heading"> Our<span>Products</span></h1>
+    <div class="d-flex justify-content-center bg-light"><h3><a style="text-decoration: none" href="/products">View Products</a></h3></div>
+    <br>
     <section>
       <div class="container">
         <div class="row">
@@ -43,25 +45,21 @@
                   <tbody>
                       {% for i in search %}
                       <tr>
-                        
-
                           <td>{{i[1]}}</td>
                           <td>{{i[2]}}</td>
                           <td>{{i[3]}}</td>
-                          <td><img height="150" width="5" src="/static/image/{{i[4]}}" class="card-img-top" alt=""></td>
-                          <form action="/cart" method="post">
-                            <button  type="submit" class="btn btn-warning"> <a style="text-decoration:none" href="/cart?id={{i[0]}}">Add to Wrap</a> </button>
+                          <td><div class="card" style="width: 24rem;">
+                            <img src="/static/image/{{i[4]}}" style="display: inline" class="card-img-top" width="200px" height="200px" alt=""></td>
+                              </div>
+                            <form action="/cart" method="post">               
+                            <button  type="submit" class="btn btn-warning"> <a style="text-decoration:none" href="/cart?id={{i[0]}}">Add to Wrap</a></button>
                           </form>
                       </tr>
                       {% endfor %}
 
                   </tbody>
                 </table>
-
-
                 {% endif %}
-
-
             </div>
         </div>
             </div>

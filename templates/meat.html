@@ -57,7 +57,7 @@
     </nav>
     <div class="container">
       <div class="row">
-        <div class="col col-12 col-sm-8 col-md-6 col-lg-4 col-xl-4 col-xxl-3" >
+        <div class="col col-12 col-sm-6 col-md-6 col-lg-4 col-xl-4 col-xxl-3" >
           <form action="/usersearch" method="post" class="search-form">
             <input type="search"  name="pname" id="search-box" class="form-control" placeholder="search here...">
             <button type="submit" class="btn" ><label  for="search-box" class="fas fa-search"></label></button>
@@ -74,10 +74,10 @@
         <div class="container">
             <div class="row">
                 {% for i in products %}
-                <div class="col col-12 col-sm-8 col-md-6 col-lg-4 col-xl-4 col-xxl-3">
+                <div class="col col-12 col-sm-6 col-md-6 col-lg-4 col-xl-4 col-xxl-3">
                   <br>
                   <br>
-                  <div class="card" style="width: 18rem;">
+                  <div class="card" style="width: 24rem;">
                     <img src="/static/image/{{i[4]}}" style="display: inline" class="card-img-top" width="200px" height="200px" alt="">
                       <div class="card-body">
                         <center>
@@ -88,7 +88,7 @@
                       <li class="list-group-item text-white bg-dark mb-3"><center>Product Name: {{i[2]}}</center></li>
                       <li class="list-group-item text-white bg-dark mb-3"><center><b>Price:Rs {{i[3]}}</b> </center> </li>
                         <form action="/cart" method="post">
-                            <button  type="submit" class="btn btn-warning"> <a style="text-decoration:none" href="/cart?id={{i[0]}}">Add to Wrap</a> </button>
+                          <center><button  type="submit" class="btn btn-warning"> <a style="text-decoration:none" href="/cart?id={{i[0]}}">Add to Wrap</a> </button></center>
                         </form>
 
 
