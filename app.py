@@ -104,6 +104,41 @@ def new_user():
 
     return render_template("register.html")
 
+@app.route('/update',methods=['GET','POST'])
+def Update_user():
+    try:
+        if request.method == 'POST':
+            getname = request.form["newname"]
+            print(getname)
+            cursor = connection.cursor()
+            count = cursor.execute("select * from user where name='" + getname + "' ")
+            result = cursor.fetchall()
+            print(len(result))
+            return render_template("editprofile.html", searchname = result)
+        return render_template("editprofile.html")
+    except Exception as error:
+        print(error)
+
+
+@app.route('/edit',methods=['GET','POST'])
+def User_edit():
+    if request.method == 'POST':
+        getName = request.form["newname"]
+        getEmail = request.form["newemail"]
+        getPhone = request.form["newphone"]
+        getPass = request.form["newpass"]
+        try:
+            query = "update user set phone_number=" + getPhone + ",email='" + getEmail + "',password='" + getPass + "' where name='" + getName + "'"
+            print(query)
+            connection.execute(query)
+            connection.commit()
+            print("Edited Successfully")
+            return redirect('/userlogin')
+        except Exception as error:
+            print(error)
+
+    return render_template("editprofile.html")
+
 @app.route("/userlogin", methods=["POST", "GET"])
 def user_login():
     global Uid
