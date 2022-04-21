@@ -2,10 +2,13 @@ import os.path
 
 import razorpay
 from flask import Flask, render_template, request, session
+from instamojo_wrapper import Instamojo
 from flask_session import Session
 import sqlite3 as sql
 
 from werkzeug.utils import redirect, secure_filename
+
+
 
 
 connection = sql.connect("Wrapup.db", check_same_thread=False)
@@ -58,11 +61,17 @@ else:
                                     user_id text );''')
 
 
+# API_KEY = "test_4f649f18ca3b6300e9ae87f0dbc"
+# AUTH_TOKEN = "test_ab228ea9b3bf1027511d6a7e324"
+# api = Instamojo(api_key=API_KEY,auth_token=AUTH_TOKEN,endpoint='https://test.instamojo.com/api/1.1/')
+
 app = Flask(__name__)
 app.config["SESSION_PERMANENT"] = False
 app.config["SESSION_TYPE"] = "filesystem"
 Session(app)
 app.config['UPLOAD_FOLDER'] = "static\image"
+
+
 
 @app.route("/", methods=["POST", "GET"])
 def home():
@@ -404,6 +413,42 @@ def user_finalcheckout():
     connection.commit()
     print("Cart cleared sucessfully")
     return redirect("/payment")
+
+
+
+
+# @app.route('/payment')
+# def pay_home():
+#     return render_template('home.html')
+#
+#
+# @app.route('/success')
+# def success():
+#     return render_template('success.html')
+#
+#
+# @app.route('/pay', methods=['POST', 'GET'])
+# def pay():
+#     if request.method == 'POST':
+#         name = request.form.get('name')
+#         purpose = request.form.get('purpose')
+#         email = request.form.get('email')
+#         amount = request.form.get('amount')
+#
+#         response = api.payment_request_create(
+#             amount=amount,
+#             purpose=purpose,
+#             buyer_name=name,
+#             send_email=True,
+#             email=email,
+#             redirect_url="http://localhost:5000/success"
+#         )
+#
+#         return redirect(response['payment_request']['longurl'])
+#
+#     else:
+#
+#         return redirect('/')
 
 @app.route("/payment")
 def user_payment():
